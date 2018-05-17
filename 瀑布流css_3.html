@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>瀑布流布局</title>
+    <style>
+        *{ margin:0px; padding:0px;}
+        li{ list-style:none}
+        #div1{ width:760px; height:auto; margin:20px auto;}
+        ul{ width:240px; margin:5px; float:left;}
+    </style>
+</head>
+<!--各列固定宽度，并且左浮动；-->
+<!--一列中的数据块为一组，列中的每个数据块依次排列即可；-->
+<!--更多数据加载时，需要分别插入到不同的列上；-->
+
+<!--优点:-->
+<!--（1）布局简单，应该说没啥特别的难点；-->
+<!--（2）不用明确知道数据块高度，当数据块中有图片时，就不需要指定图片高度。-->
+<!--缺点:-->
+<!--（1）列数固定，扩展不易，当浏览器窗口大小变化时，只能固定的x列，如果要添加一列，很难调整数据块的排列；-->
+<!--（2）滚动加载更多数据时，还要指定插入到第几列中，还是不方便。-->
+<body>
+<div id="div1">
+    <ul>
+        <li>
+            <img src="img/1.jpg" />
+        </li>
+        <li>
+            <img src="img/2.jpg" />
+        </li>
+        <li>
+            <img src="img/3.jpg" />
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <img src="img/4.jpg" />
+        </li>
+        <li>
+            <img src="img/5.jpg" />
+        </li>
+        <li>
+            <img src="img/3.jpg" />
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <img src="img/7.jpg" />
+        </li>
+        <li>
+            <img src="img/8.jpg" />
+        </li>
+        <li>
+            <img src="img/1.jpg" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>

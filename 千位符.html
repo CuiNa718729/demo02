@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <script>
+      //用逗号分割(千分位)显示用户上下分
+//    $("#coin").mouseleave(function(){
+//        var money=$("#coin").val();
+//        function re(money){
+//            money+="";
+//            return money.split("").reverse().join("");
+//        }
+//        function toRMB(num){
+//            var tmp="";
+//            for(var i=1;i<=re(num).length;i++){
+//                tmp+=re(num)[i-1];
+//                if(i%3==0&&i!=re(num).length){
+//                    tmp+=",";
+//                }
+//            }
+//            $("#money").html(re(tmp));
+//        }
+//        toRMB(money);
+//    })
+
+		//设计一个函数将数字类型转千分位表示（4705618.32）
+			function million(num){
+				var s = parseFloat(num);
+				s +="";
+				//如果没有小数点，在后面补0
+				//indexOf(关键词，fromi)关键词用"",fromi从哪个位置开始查找，没找到返回-1
+				if(s.indexOf(".") == -1){
+					s +=".0";
+				}
+				
+				//.test()验证str是否符合正则的要求
+				/*if(/\.\d$/.test(s)){
+					s +="0";
+				}*/				
+				//正则判断
+				while(/\d{4}(.|,)/.test(s)){
+					//符合条件进行替换
+					s = s.replace(/(\d)(\d{3}(\.|,))/,"$1,$2");
+					//每隔三位添加一个，
+				}
+				alert(s);
+			}
+			million(2144668689.32);
+      </script>
+ </body>
+</html>

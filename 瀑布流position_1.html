@@ -1,0 +1,108 @@
+
+<!--优点：-->
+<!--方便添加数据内容，窗口变化，列数/数据块都会自动调整；-->
+
+<!--缺点:-->
+<!--（1）需要实现知道数据块高度，如果其中包含图片，需要知道图片高度；-->
+<!--（2）JS 动态计算数据块位置，当窗口缩放频繁，可能会狂耗性能。-->
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{ margin:0px; padding:0px;}
+        li{ list-style:none}
+        #div1{ width:760px; height:auto; margin:20px auto; position:relative;}
+        li{ position:absolute;}
+    </style>
+</head>
+<body>
+<div id="div1">
+    <ul>
+        <li>
+            <img src="http://loremflickr.com/640/480/germany" />
+        </li>
+        <li>
+            <img src="http://dummyimage.com/480x4:3" />
+        </li>
+        <li>
+            <img src="http://dummyimage.com/480x3:4" />
+        </li>
+        <li>
+            <img src="http://dummyimage.com/640x21:10" />
+        </li>
+        <li>
+            <img src="http://dummyimage.com/800x4:3" />
+        </li>
+        <li>
+            <img src="http://dummyimage.com/900x4:2" />
+        </li>
+        <li>
+            <img src="http://dummyimage.com/640x5:4" />
+        </li>
+        <li>
+            <img src="http://loremflickr.com/1024/768/cool" />
+        </li>
+        <li>
+            
+        </li>
+    </ul>
+</div>
+<script language="javascript">
+    window.onload=function(){
+        var ali = document.getElementsByTagName('li');
+        var aHeight={L:[],C:[],R:[]};
+        for(var i = 0;i<ali.length;i++){
+            var iNow=i%3;
+            switch(iNow){
+                case 0:
+                    ali[i].style.left='5px';
+                    aHeight.L.push(ali[i].offsetHeight);
+                    var step=Math.floor(i/3);
+                    if(!step){
+                        ali[i].style.top=0;
+                    }else{
+                        var sum=0;
+                        for(var j=0;j<step;j++){
+                            sum+=aHeight.L[j]+5;
+                        }
+                        ali[i].style.top=sum+'px';
+                    }
+                    break;
+                case 1:
+                    ali[i].style.left='250px';
+                    aHeight.C.push(ali[i].offsetHeight);
+                    var step=Math.floor(i/3);
+                    if(!step){
+                        ali[i].style.top=0;
+                    }else{
+                        var sum=0;
+                        for(var j=0;j<step;j++){
+                            sum+=aHeight.C[j]+5;
+                        }
+                        ali[i].style.top=sum+'px';
+                    }
+                    break;
+                case 2:
+                    ali[i].style.left='495px';
+                    aHeight.R.push(ali[i].offsetHeight);
+                    var step=Math.floor(i/3);
+                    if(!step){
+                        ali[i].style.top=0;
+                    }else{
+                        var sum=0;
+                        for(var j=0;j<step;j++){
+                            sum+=aHeight.R[j]+5;
+                        }
+                        ali[i].style.top=sum+'px';
+                    }
+                    break;
+            }
+        }
+    }
+</script>
+</head>
+</body>
+</html>
