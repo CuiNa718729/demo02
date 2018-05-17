@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理后台</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        .form-group{
+            margin-bottom: 25px;
+            width: 295px;
+        } 
+        label{
+            width: 37px;
+        }
+        input{
+            width: 150px;
+        }
+        #upwd_tips,#account_tips{
+            display: inline-block;
+            width: 98px;
+            height: 22px;
+            color: #f00;
+        }
+        input[type="checkbox"]{
+            width: 13px;
+            height: 13px;
+        }
+        label.rupwd{
+            width: 70px;
+            margin-left: -220px;
+        }
+    </style>
+</head>
+<body>
+<div class="container ">
+    <div class="row header">
+        <div class="col-xs-12 text-center">登录</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="text-center form">
+                <div class="form-group">
+                    <label for="account">账号: </label>
+                    <input type="text" id="account" required autocomplete="off" autofocus/>
+                    <span id="account_tips"></span>
+                </div>
+                <div class="form-group">
+                    <label for="upwd">密码: </label>
+                    <input type="password" id="upwd"/>
+                    <span id="upwd_tips"></span>
+                </div>
+                <div class="form-group">
+                    <label for="upwd" class="rupwd">记住密码:</label>
+                    <input type="checkbox" id="rupwd"/>
+                </div>
+                <div class="form-group">
+                    <a href="register.html" class="btn" id="register">注册</a>
+                    <a href="##" class="btn" id="login" onclick="btnLogin_click()">登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+    //登录验证
+    $('#account').blur(accountCheck);
+    $('#upwd').blur(upwdCheck);
+
+    $('#login').click(function(){
+        var account=$("#account").val();
+        var upwd=$("#upwd").val();
+        if(accountCheck()&&upwdCheck()){//验证通过
+//            var uname= $.trim($('#uname').val());
+//            var upwd= $.trim($('#upwd').val());
+            console.log("123");
+            location.href="diantou.html";
+        }
+    });
+
+    //验证账号
+    function accountCheck(){
+        var account= $.trim($('#account').val());
+        var accountSize= $.trim($("#account").val()).length;
+//        console.log(account);
+//        console.log(accountSize);
+        if(!account){//当用户名为空的时候
+            $('#account_tips').show().text('用户名不能为空');
+            return false;
+        }else if(accountSize<6||accountSize>12){
+            $('#account_tips').show().text('用户名输入有误');
+        }
+        else{
+            $('#account_tips').val("");
+            return true;
+        }
+    }
+    //验证密码
+    function upwdCheck(){
+        var upwd= $.trim($('#upwd').val());
+        var regUpwd=/^[A-Za-z0-9]{6,9}$/;
+        if(!upwd){//当密码为空的时候
+            $('#upwd_tips').show().text("密码不能为空");
+            return false;
+        }
+        else if(!regUpwd.test(upwd)){
+            $('#upwd_tips').show().text("密码格式有误");
+            $('#upwd_tips').val("");
+            console.log(123);
+        }
+        else{
+            $('#upwd_tips').val("");
+            return true;
+        }
+    };
+//一下代码为验证login记住密码
+    $(document).ready(function(){
+        var strName=localStorage.getItem("keyName");//用变量代替键名
+        var strPass=localStorage.getItem("keyPass");
+//判断，如果输入的值等于存储的值
+        if(strName){
+            $("#account").val(strName);
+        }
+        if(strPass){
+            $("#upwd").val(strPass);
+        }
+    });
+
+
+    function btnLogin_click(){
+        var strName=$("#account").val();//存储文本框的值
+        var strPass=$("#upwd").val();
+        localStorage.setItem("keyName",strName);
+        if($("#rupwd").is(':checked')){//如果选择保存密码
+            localStorage.setItem("keyPass",strPass);//系统存储密码，否则移除
+        }else{
+            localStorage.removeItem("keyPass");
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

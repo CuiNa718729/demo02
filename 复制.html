@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>target-div</title>
+	</head>
+	<body>
+	    <!-- 1. Define some markup -->
+	    <div class="copy-text1">
+	    	<div>hello</div>
+	    	<div>hello</div>
+	    	<div>hello</div>
+	    </div>
+		<button class="btn1" data-clipboard-action="copy" data-clipboard-target=".copy-text1">Copy1</button>
+		<div class="copy-text2">
+			<div>word</div>
+			<div>word</div>
+			<div>word</div>
+		</div>
+		<button class="btn2" data-clipboard-action="copy" data-clipboard-target=".copy-text2">Copy2</button>
+		<!-- 2. Include library -->
+		<!-- 3. Instantiate clipboard -->
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+		<script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.js"></script>
+		<script>
+		    var clipboard1 = new Clipboard('.btn1');
+		    // console.log(clipboard1);
+		    clipboard1.on('success', function(e) {
+		    	console.log(e);
+		        alert('复制成功copy-text1');
+		    });
+		    var clipboard2 = new Clipboard('.btn2');
+		    // console.log(clipboard2);
+		    clipboard2.on('success', function(e) {
+		    	console.log(e);
+		        alert('复制成功copy-text2');
+		    });
+		    clipboard1.on('error', function(e) {
+		        console.log(e);
+		    });
+		    clipboard2.on('error', function(e) {
+		        console.log(e);
+		    });
+		</script>
+	</body>
+</html>

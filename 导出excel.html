@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理后台</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+    <link rel="stylesheet" href="laydate/skins/molv/laydate.css">
+    <link rel="stylesheet" href="laydate/need/laydate.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+    <div class="row border-bottom common">
+    </div>
+    <div class="row m-t-10">
+        <div class="col-xs-12 col-sm-2 common_nav"></div>
+        <div class="col-xs-12 col-sm-10">
+                <div class="row">
+                       <div class="col-xs-12">
+                          <form class="clearfix">
+                            <div class="form-group">
+                                <label>选择日期:</label>
+                                <input type="text" id="date" class="laydate-icon"/>-<input type="text" id="date1" class="laydate-icon"/>
+                                <button class="btn btn-primary">确认查询</button>
+                                <a class="btn btn-primary  pull-right" id="exportExcel" href="javascript:;">导出</a>
+                            </div>
+                          </form>
+                       </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-xs-12 table-responsive">
+                    <table class="table table-bordered text-center" id="targetTable">
+                      <tr>
+                        <td>日期</td>
+                        <td>靴牌</td>
+                        <td>游戏账号</td>
+                        <td>比数</td>
+                        <td>零数</td>
+                        <td>对冲</td>
+                        <td>占成</td>
+                        <td>自营合计</td>
+                        <td>三宝</td>
+                        <td>起台筹码</td>
+                        <td>结束筹码</td>
+                        <td>初始分</td>
+                        <td>余分</td>
+                        <td>洗码</td>
+                        <td>注意码粮</td>
+                        <td>自营盈利</td>
+                        <td>汇率差</td>
+                        <td>毛利润合计</td>
+                      </tr>
+                      <tr class="vertical_td">
+                        <td rowspan="14" class="vertical_td">5月15日</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td>靴牌</td>
+                      </tr>
+                      <tr>
+                        <td class="total">合计</td>
+                      </tr>
+                    </table>
+                  </div>
+                 </div>
+              
+            
+        </div>
+    </div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+<script src="js/common.js"></script>
+<script src="js/laydate.js"></script>
+
+<script>
+    $(".my-accordion").accordion();
+    laydate({
+        elem:"#date",
+        format:"YYYY-MM-DD",
+        istime:true,
+        festival:true
+    });
+    laydate({
+        elem:"#date1",
+        format:"YYYY-MM-DD",
+        istime:true,
+        festival:true
+    });
+
+    var tableToExcel = (function() {
+        var uri = 'data:application/vnd.ms-excel;base64,',
+            template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">'
+                + '<head><meta http-equiv="Content-type" content="text/html;charset=UTF-8" /><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/>'
+                + '</x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+            base64 = function(s) {
+                return window.btoa(unescape(encodeURIComponent(s)))
+            },
+            format = function(s, c) {
+                return s.replace(/{(\w+)}/g, function(m, p) {
+                    return c[p];
+                })
+            };
+
+        return function(table, name) {
+            var ctx = {
+                worksheet : name || 'Worksheet',
+                table : table.innerHTML
+            }
+            return uri + base64(format(template, ctx));
+        }
+    })();
+
+    $(function(){
+        $('#exportExcel').on('click', function(){
+            var $this = $(this);
+            //设定下载的文件名及后缀
+            $this.attr('download', '棋牌.xls');
+            //设定下载内容
+            $this.attr('href', tableToExcel($('#targetTable')[0], '百家乐'));
+        });
+    });
+</script>
+
+</body>
+</html>
