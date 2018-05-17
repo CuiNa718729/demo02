@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <script>
+  //获取url的参数
+	function getSearch(url){
+		var search=window.location.search;
+		var obj={};
+		var arr=[];
+		if(search.indexOf("?")!=-1){
+			var str=search.substr(1);
+			var items=str.split("&");
+			for(var i=0;i<items.length;i++){
+				arr=items[i].split("=");
+				obj[arr[0]]=arr[1];
+			}
+		}
+		return obj;
+	  }
+    var Request=new Object();
+    Request=getSearch();
+    var userName=Request["userName"];
+</script>	
+ </body>
+</html>

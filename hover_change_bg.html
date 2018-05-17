@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .nav_list{
+            position:relative;
+            margin:6px 0;
+        }
+        .nav_list>a{
+            position: relative;
+            display: inline-block;
+            width:20px;
+            height:20px;
+            border-radius: 50%;
+            background: #ccc;
+            color:#000;
+        }
+        .triangle{
+            position: absolute;
+            top:5px;
+            right:-9px;
+            width:0;
+            height:0;
+            border:5px solid transparent;
+            border-left-color: blue;
+            display: none;
+        }
+        .word{
+            position: absolute;
+            top:1px;
+            right:-40px;
+            display: none;
+        }
+        .nav_list>a:hover{
+            background: blue;
+            transform: scale(1.2);
+        }
+        .nav_list>a:hover .word,.nav_list>a:hover .triangle{
+            display: block;
+        }
+
+
+
+		/* 伪元素 */
+		  .list-one>li{
+            width: 20px;
+            height: 20px;
+			border-radius:50%;
+            background: #ccc;
+            position: relative;
+            right: -120px;
+            transition: all 0.3s;
+            margin: 30px 0;
+        }
+        .list-one>li:after{
+            content: "";
+            position: absolute;
+            border: 9.3px solid transparent;
+            border-right-color: #3460a7;
+            top: .5px;
+            left: -13px;
+            opacity: 0;
+            z-index: -10;
+            transition: all .1s;
+        }
+        .text{
+            display: none;
+            width: 68px;
+			height:20px;
+            line-height: 20px;
+            position: absolute;
+            top: 2px;
+            left: -75px;
+            color: #000;
+            text-align: center;
+            margin-right: 10px;
+        }
+        .list-one>li:hover{
+            background: #3640a7;
+            transform: scale(1.5);
+        }
+        .list-one>li:hover:after{
+            opacity: 1;
+        }
+        .list-one>li:hover .text{
+            display: block;
+            font-size: 10px;
+      }
+        /*/背景图 */
+		.nav-list li {
+			width: 39px;
+			height: 30px;
+			background-size: 20px 20px;
+			position: relative;
+			background: url('images/indicator.png') no-repeat 9.5px 5px #ccc;
+		}
+		.nav-list li:hover {
+			background: url('images/tab.png') no-repeat;
+			background-size: 39px 30px;
+			z-index: 100;
+		}
+		.words{
+			width: 50px;
+			height:20px;
+			color: #000;
+			font-size: 20px;
+			position: absolute;
+			top:5px;
+			right: 45px;
+			display: none;
+		}
+		.nav-list li:hover  .words{
+			display: block;
+		}
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li class="nav_list">
+	   <a href="#">
+			<span class="triangle"></span>
+			<span class="word">首页</span>
+	   </a>
+	</li>
+    <li class="nav_list">
+		<a href="#">
+			<span class="triangle"></span>
+			<span class="word">说说</span>
+		</a>
+	</li>
+    <li class="nav_list">
+		<a href="#">
+			<span class="triangle"></span>
+			<span class="word">相册</span>
+		</a>
+	</li>
+    <li class="nav_list">
+		<a href="#">
+			<span class="triangle"></span>
+			<span class="word">动态</span>
+		</a>
+	</li>
+</ul>
+
+<!--伪元素方法-->
+    <ul class="list-one">
+        <li>
+            <span class="text">首页</span>
+        </li>
+        <li>
+            <span class="text">项目</span>
+        </li>
+        <li>
+            <span class="text">新闻</span>
+        </li>
+        <li>
+            <span class="text">联系</span>
+        </li>
+    </ul>
+
+
+<!-- 背景图 -->
+		<ul class="nav-list">
+			<li>
+				 <p class="words">首 页</p>
+			 </li>
+			 <li>
+				 <p class="words">详 情</p>
+			 </li>
+			 <li>
+				 <p class="words">电 话</p>
+			 </li>
+        </ul>
+</body>
+</html>
