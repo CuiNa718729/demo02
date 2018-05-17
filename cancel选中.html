@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  //  取消选中事件
+ $(":radio").click(
+     function(){
+         var nm=$(this).attr("name");
+         $(":radio[name="+nm+"]:not(:checked)").attr("tag",0);
+         if($(this).attr("tag")==1){
+             $(this).attr("checked",false);
+             $(this).attr("tag",0);
+         }else{
+             $(this).attr("tag",1);
+         }
+     }
+ );
+
+ </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #clock{
+            width:200px;
+            height:200px;
+            border-radius: 50%;
+            border:5px solid #000;
+            position:relative;
+        }
+        #minute{
+            width:6px;
+            height:50px;
+            background:#faf;
+            position:absolute;
+            left:97px;
+            top:50px;
+            transform-origin:center bottom;
+            animation:clock 3600s linear infinite;
+        }
+        #second{
+            width:4px;
+            height:70px;
+            background:#aaf;
+            position:absolute;
+            left:98px;
+            top:30px;
+            transform-origin:center bottom;
+            animation:clock 60s linear infinite;
+        }
+        @keyframes clock {
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="clock">
+    <div id="minute"></div>
+    <div id="second"></div>
+</div>
+</body>
+</html>

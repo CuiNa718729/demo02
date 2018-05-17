@@ -1,0 +1,78 @@
+window.alert = alert;
+        function alert(data) {
+            var a = document.createElement("div"),
+                p = document.createElement("p"),
+				h4=document.createElement("h4"),
+				span=document.createElement("div");
+                btn = document.createElement("div"),
+                textNode = document.createTextNode(data ? data : ""),
+				 h4Text = document.createTextNode("温馨提示:");
+                btnText = document.createTextNode("确定");
+				spanText = document.createTextNode("x");
+            // 控制样式
+            css(a, {
+                "position" : "fixed",
+                "left" : "0",
+                "right" : "0",
+                "top" : "20%",
+                "width" : "400px",
+				"height":"150px",
+                "margin" : "0 auto",
+                "background-color" : "#2ac5f2",
+				"color":"#fff",
+                "font-size" : "20px",
+                "text-align" : "center",
+				"padding-top":"10px",
+				"border-radius":"6px"
+            });
+			css(span,{
+				"position":"absolute",
+				"top":"-11px",
+				"right":"-7px",
+				"font-size":"25px",
+				"display":"inline-block",
+				"width":"25px",
+				"height":"25px",
+				"line-height":"25px",
+				"border-radius":"50%",
+				"background":"#000",
+				"opacity":".6",
+				"cursor":"pointer",
+			})
+            css(btn, {
+                "background" : "#00479d",
+				"cursor":"pointer",
+				"position":"absolute",
+				"bottom":"0",
+				"width":"100%"
+            })
+				css(h4, {
+                "margin-left":"-300px",
+				"margin-top":"0px"
+            })
+            // 内部结构套入
+            p.appendChild(textNode);
+            btn.appendChild(btnText);
+			span.appendChild(spanText);
+			h4.appendChild(h4Text);
+			a.appendChild(h4);
+            a.appendChild(p);
+            a.appendChild(btn);
+			a.appendChild(span);
+            // 整体显示到页面内
+            document.getElementsByTagName("body")[0].appendChild(a);
+            // 确定绑定点击事件删除标签
+            btn.onclick = function() {
+                a.parentNode.removeChild(a);
+            },
+				span.onclick = function() {
+                a.parentNode.removeChild(a);
+            }
+        }
+        function css(targetObj, cssObj) {
+            var str = targetObj.getAttribute("style") ? targetObj.getAttribute("style") : "";
+            for(var i in cssObj) {
+                str += i + ":" + cssObj[i] + ";";
+            }
+            targetObj.style.cssText = str;
+        }

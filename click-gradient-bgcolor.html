@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>点击背景渐变</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<style>
+		.nav {
+			overflow: hidden;
+		}
+		.navitem {
+			font-size: 14px;
+			float: left;
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			background: #aff;
+			border: 1px solid #eee;
+			transition: all 1s;
+			text-align: center;
+			position: relative;
+		}
+		.txt {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			z-index: 10;
+		}
+		.bg {
+			width: 0;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			transition: all 1s;
+		}
+		.navitem.active .bg {
+			width: 100%;
+			background: #aaf;
+		}
+
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li class="navitem">
+			<span class="txt">首页</span>
+			<div class="bg"></div>
+		</li>
+		<li class="navitem">
+			<span class="txt">首页</span>
+			<div class="bg"></div>
+		</li>
+		<li class="navitem">
+			<span class="txt">首页</span>
+			<div class="bg"></div>
+		</li>
+	</ul>
+
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$('.navitem').mousemove(function () {
+			$(this).addClass('active')
+				.siblings().removeClass('active');
+
+		});
+	</script>
+</body>
+</html>

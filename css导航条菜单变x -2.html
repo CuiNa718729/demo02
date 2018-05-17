@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>利用css菜单变X号-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+#navbar-btn{
+    width: .4rem;
+    height: .32rem;
+    margin-right: 0.3rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon-bar{
+    display: block;
+    width: .4rem;
+    height: .04rem;
+    background: #fff;
+    transition: all .2s ease-in-out;
+}
+.navbar-btn .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translate(0.1rem,.1rem);
+}
+.navbar-btn .icon-bar:nth-child(2) {
+    visibility: hidden;
+}
+.navbar-btn .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(0.1rem,-.1rem);
+}
+.navbar-collapse.nav-hide {
+    animation: fadeOutUp .5s 0s ease-in-out both;
+    display: none;
+}
+.navbar-collapse.nav-show {
+    animation: bounceInDown .5s 0s ease-in-out both;
+    display: block;
+}
+</style>
+</head>
+<body>
+  <div class="navbar-header">
+        <button type="button" id="navbar-btn" class="right">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+<script>
+//导航条下拉
+$("#navbar-btn").click(function(){
+    $(this).toggleClass("navbar-btn");
+    if ($(".navbar-collapse").hasClass('nav-show')) {
+        $(".navbar-collapse").removeClass('nav-show').addClass("nav-hide");
+    }
+    else {
+        $(".navbar-collapse").removeClass('nav-hide').addClass("nav-show");
+    }
+});
+</script>
+
+</body>
+</html>
