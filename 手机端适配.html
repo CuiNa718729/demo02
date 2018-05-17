@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="full-screen" content="yes">
+
+	<script type="text/javascript">
+		function get_hfs() {
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+		}
+		get_hfs();
+
+		function throttle(method, context) {
+			clearTimeout(method.timer);
+			method.timer = setTimeout(function() {
+				method.call(context);
+			}, 100)
+		}
+		window.onresize = function() {
+			throttle(get_hfs);
+		}
+		</script>
+
+ </body>
+</html>

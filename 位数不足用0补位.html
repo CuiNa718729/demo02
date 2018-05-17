@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+ //将数字格式化 位数不足 以0补位  1-》00001  12-》00012 12345-》12345
+  function padNumber(num, fill) {
+      var num=""+num;//将数字形式转换为字符串形式
+      if(num.indexOf(".")){//判断是否有小数
+          var arr1=num.split(".");//按.切割
+          var len=(""+arr1[0].length);//计算整数部分的长度
+      }else{//没有小数 直接计算
+       var len = ('' + num).length;
+      }//将整数部分的长度与fill（位数）进行比较 创建fill-length+1个空元素的空数组 用join(0)进行拼接+num
+      //用join进行拼接是将数组中的两个元素之间的 ，转换成要拼接的()中的拼接符
+       return (Array(fill > len ? fill - len + 1 : 0).join(0) + num);
+   }
+console.log(Array(3).join(0));// 0 0 按拼接的个数无缝拼接的 ()里边是拼接符
+console.log(Array(4).join(1)); // 1 1 1 1
+console.log(Array(4).join(" "));//
+console.log([1,2,3].join("0"));
+console.log(Array(3).join(""));
+console.log([1,2,3].join(" "));
+console.log(padNumber(11.23, 5));
+    //允许负数
+//    function padNumber(number, fill) {
+//        var new_number = number * (number > 0 ? 1 : -1),
+//                len = ('' + new_number).length;
+//        return (number > 0 ? '' : '-') + (Array(
+//                        fill > len ? fill - len + 1 || 0 : 0
+//                ).join(0) + new_number);
+//    }
+//    console.log(padNumber(-2,4));
+
+</script>
+</body>
+</html>
