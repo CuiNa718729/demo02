@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery文字左右无缝滚动-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	padding:0;
+	margin:0;
+	font-family:"微软雅黑";
+}
+li {
+	list-style:none;
+}
+a {
+	text-decoration:none;
+}
+img {
+	border:none;
+}
+.box {
+	padding-left:50px;
+	background:url("images/xtb.png") no-repeat;
+	margin-top:100px;
+	margin-left:100px;
+}
+.winBox {
+	width:460px;
+	height:40px;
+	overflow:hidden;
+	position:relative;
+	background:pink;
+}
+.scroll {
+	/*width的大小是根据下面li的长度和多少个li而定的，需注意！*/
+	width:2760px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.scroll li {
+	width:460px;
+	float:left;
+	line-height:40px;
+	text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="winBox">
+    <ul class="scroll">
+      <li><a href="#">3333时尚休闲裤68元时尚休闲裤68元时尚休闲裤68元时尚休闲裤</a></li>
+	  <li><a href="#">4444时尚休闲裤68元时尚休闲裤68元时尚休闲裤68元时尚休闲裤</a></li>
+	  <li><a href="#">5555时尚休闲裤68元时尚休闲裤68元时尚休闲裤68元时尚休闲裤</a></li>
+      
+      <!--给所要的内容复制一份-->
+      <li><a href="#">3333时尚休闲裤68元时尚休闲裤68元时尚休闲裤68元时尚休闲裤</a></li>
+	  <li><a href="#">4444时尚休闲裤68元时尚休闲裤68元时尚休闲裤68元时尚休闲裤</a></li>
+	  <li><a href="#">5555时尚休闲裤68元时尚休闲裤68元时尚休闲裤68元时尚休闲裤</a></li>
+      
+    </ul>
+  </div>
+</div>
+
+<script>
+$(function() {
+    var num = 0;
+    function goLeft() {
+        //1380是根据你给的尺寸，可变的 （scroll的一半）
+        if (num == -1380) {
+            num = 0;
+        }
+        num -= 1;
+        $(".scroll").css({
+            left: num
+        })
+    }
+    //设置滚动速度
+    var timer = setInterval(goLeft, 20);
+    //设置鼠标经过时滚动停止
+    $(".box").hover(function() {
+        clearInterval(timer);
+    },
+    function() {
+        timer = setInterval(goLeft, 20);
+    })
+})
+</script>
+
+</body>
+</html>
