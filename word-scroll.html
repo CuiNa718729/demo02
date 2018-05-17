@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            text-align: center;
+            margin:0 auto;
+        }
+        .broadcast{
+            height:20px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="broadcast">
+    <ul class="list">
+        <li>11111</li>
+        <li>2222222</li>
+        <li>333333333</li>
+        <li>44444444444</li>
+        <li>5555555555555</li>
+    </ul>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    var _wrap = $('.broadcast .list'); // 定义滚动区域
+    var _interval = 2000; // 定义滚动间隙时间
+    var _moving; // 需要清除的动画
+    (function(){
+        _moving = setInterval(function () {
+            if (_wrap.children().length <= 1) {
+                clearInterval(_moving);
+                _moving = null;
+                return;
+            }
+            // 不可放置于函数起始处,li:first取值是变化的
+            var _field = _wrap.find('li:first');
+            var _h = _field.height();
+            console.log(_h);
+            _field.animate({marginTop: -_h + 'px'}, 600, function () {
+                // 隐藏后,将该行的margin值置零,并插入到最后,实现无缝滚动
+                _field.css('marginTop', 0).appendTo(_wrap);
+            });
+        }, _interval);
+    }())
+</script>
+</body>
+</html>

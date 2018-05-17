@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript图片缩放库Zooming演示-默认效果_dowebok</title>
+    <style>
+        .wrap { width: 600px; margin: 0 auto;}
+        .wrap img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<h1>默认效果</h1>
+
+<div class="wrap">
+    <a href="images/1s.jpg">
+        <img class="img-zoomable" src="images/1s.jpg" alt="">
+    </a>
+</div>
+
+<script src="zooming.min.js"></script>
+<script>
+    var zooming = new Zooming();
+    zooming.listen('.img-zoomable');
+</script>
+</body>
+</html>

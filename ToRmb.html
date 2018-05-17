@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    将12345678转换成RMB12,345,678
+    var str=12345678;
+    function re(str){
+        str+="";//先转为字符串格式  利用反转函数 每三位加一个逗号
+        // 最后一位不加 最后在反转回去
+        return str.split("").reverse().join("");
+    }
+    function toRMB(num){
+        var tmp="";
+        for(var i=1;i<=re(num).length;i++){
+            tmp+=re(num)[i-1];
+            if(i%3==0&&i!=re(num).length){
+                tmp+=",";
+            }
+        }
+        //return re(tmp);
+        console.log(re(tmp));//再用re反转函数反转回去 12,345,678
+        //console.log(tmp);//876,543,21
+    }
+    toRMB(str);
+    //console.log(toRMB(str));
+</script>
+</body>
+</html>
