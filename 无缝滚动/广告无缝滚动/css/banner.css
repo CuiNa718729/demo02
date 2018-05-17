@@ -1,0 +1,47 @@
+.container {
+	width: 1378px;
+	height: 426px;
+	overflow: hidden;
+	position: relative;
+	background: #aff;
+}
+
+.prev, .next {
+	position: absolute;
+	top: 165px;
+	right: 0;
+	width: 56px;
+	height:96px;
+	background: url('../img/next.png') no-repeat;
+	background-size: 100% 100%;
+}
+
+.prev {
+	left: 0;
+	background: url(../img/prev.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.banner-content {
+	position: absolute;
+	top: 0;
+	left: 56px;
+	width: 1266px;
+	height: 426px;
+	overflow: hidden;
+}
+
+.banner {
+	position: absolute;
+	/*width: 2110px;*/
+	overflow: hidden;
+}
+
+.banner>li {
+	float: left;
+
+}
+
+
+
+
